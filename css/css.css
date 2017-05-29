@@ -1,0 +1,27 @@
+*{
+  background: black;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: white;
+}
+
+.grid-container{
+     width: 100%;
+     max-width: 1200px;
+ }
+
+[class*='col-'] {
+     float: left;
+     min-height: 1px;
+     width: 16.66%;
+     /*-- gutter -- */
+     padding: 12px;
+     background-color: #FFDCDC;
+     border: 1px solid black;
+   }
+
+.col-1{ width: 33.33%; }
+.col-2{ width: 33.33%; }
+.col-3{ width: 33.33%; }
