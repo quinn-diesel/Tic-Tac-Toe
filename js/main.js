@@ -1,4 +1,4 @@
-console.log("check");
+console.log("check me out now");
 // Overview
 //
 // Let's start out with something fun - a game!
@@ -97,87 +97,18 @@ $(document).ready(function (){
 
 
 //TRIAL
-//consoling on the grid on the this.id (the class.id)
-// square is the class calling on the squares
+//telling the function
 
-$('.col').click( function(){
+
+$('.col').one('click',( function(){
   var row = $(this).index();
-  // var id = $(row).index();
-  var id = this.id; //$(this).find('id').text;
-  // var slice = $()
-  // debugger;
+  var id = this.id;
   console.log('You clicked ' + this.id);
-});
+}));
 
 
-//TRIAL
+// clicker count
 
-
-// <a href="#" id="pager_1" class="pagerlink" >link</a>
-//
-// $('a.pagerlink').click(function() {
-//     var id = $(this).attr('id');
-//     $container.cycle(id.replace('pager_', ''));
-//     return false;
-// });
-
-// $('.board-container').one('click', function (){
-//   var id = $(this).attr('id');
-//     $('board-container').cycle(id.replace('#', ''));
-//   console.log('test');
-//   return false;
-// });
-
-//REGISTERED CLICKS
-
-  $("#grid-1").one('click', function (){
-    console.log("clicked row 1 grid 1");
-    //value of 8
-  });
-
-
-  $("#grid-2").one('click', function (){
-    console.log("clicked row 1 grid 2");
-    //value of 1
-  });
-
-  $("#grid-3").one('click', function (){
-    console.log("clicked row 1 grid 3");
-    //value of 6
-  });
-
-  $("#grid-4").one('click', function (){
-    console.log("clicked row 2 grid 1");
-    //value of 3
-  });
-
-
-  $("#grid-5").one('click', function (){
-    console.log("clicked row 2 grid 2");
-    //value of 5
-  });
-
-  $("#grid-6").one('click', function (){
-    console.log("clicked row 2 grid 3");
-    //value of 7
-  });
-
-  $("#grid-7").one('click', function (){
-    console.log("clicked row 3 grid 1");
-    //value of 4
-  });
-
-  $("#grid-8").one('click', function (){
-    console.log("clicked row 3 grid 2");
-    //value of 9
-  });
-
-  $("#grid-9").one('click', function (){
-    console.log("clicked row 3 grid 3");
-    //value of 2
-  });
-
-// counter clicker
 
 
 // Register the players
@@ -186,77 +117,63 @@ $('.col').click( function(){
     // var player_2 = !player_1;
     // var $player_2 = $(player_1.reverse());
 
-//trial
 
+//trial stack overflow
+
+  // var player_one = true;
+  // function display_input(square){
+  //     if ( player_one === true ){
+  //         document.getElementById(square).innerHTML = "X";
+  //         player_one = 0;
+  //     } else {
+  //         document.getElementById(square).innerHTML = "O";
+  //         player_one = 1;
+  //     }
+  // }
+
+// //swicthing players with true
+// var players = function (){
+//
+//   var player_1 = true;
+//   var player_2 = !player_1;
+//
+// for (var i = 0; i < player_1.length; i++) {
+//   if (player_1 === true ) {
+//     return player_2;
+//     // console.log('test 1');
+//   } else {
+//     // console.log('test 2');
+//     return player_1;
+//   }
+// }
+// };
+
+
+//   $(this).one('click', function (){
+//     if (player_1 === true ) {
+//       return player_2;
+//       // console.log('test 1');
+//     } else {
+//       // console.log('test 2');
+//       return player_1;
+//     }
+//   });
+// };
+
+
+//trial
     function player_1() {
         $(this).one("click", player_2);
-      console.log('player 1 check ' + player_1);
+      console.log('player 1 played');
     }
 
     function player_2() {
         $(this).one("click", player_1);
-      console.log('player 2 check ' + player_2);
+      console.log('player 2 played');
     }
 
     $('.board-container').one('click', player_1);
-
-    // player_2(false);
-
-    // $(player_1).click(true, player_1);
     // $('.board-container').one('click', player_2);
-
-
-//trial
-    // $('.board-container').click(function (player_1){
-    //   console.log('player 1 ' + player_1);
-    //   $(this).one('click', player_2);
-    // });
-    //
-    // $('.board-container').click(function (player_2){
-    //   console.log('player 2 ' + player_2);
-    //   $(this).one('click', player_1);
-    // });
-
-
-//trial
-    // $('.board-container').click(function(player_1){
-    //   console.log("started playing");
-    //   if (true) {
-    //     var player_2 = !player_1;
-    //     console.log("player 2 played" + player_2);
-    //   } if {
-    //     console.log (player_1 + " player_1 played");
-    //   }
-    // });
-
-    // player_1.addEventListener("change", function(event) {
-    //     if (event.target.value === "O")
-    //         players.reverse();
-    //
-    //     this.disabled = true;
-    //     playarea.style.display = "block";
-    //
-    //     displayTurn();
-    // }, false);
-    //
-
-
-
-
-
-// //Player Trial
-//     $('.board-container').click(function (){
-//       console.log(player playing);
-//
-//       if (click === true ){
-//         console.log("player 1 is playing");
-//       } else {
-//         console.log("player 2 is playing");
-//
-//       });
-//     }// board conainer function
-//
-//   }; //playermove end
 
 
 
