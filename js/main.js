@@ -100,11 +100,15 @@ $(document).ready(function (){
 //consoling on the grid on the this.id (the class.id)
 // square is the class calling on the squares
 
-$('.board-container').find('tr').click( function(){
-  var row = $(this).find('td:first').text();
-  var col = $(this).find('tr:first').text();
-  console.log('You clicked ' + row + col);
+$('.col').click( function(){
+  var row = $(this).index();
+  // var id = $(row).index();
+  var id = this.id; //$(this).find('id').text;
+  // var slice = $()
+  // debugger;
+  console.log('You clicked ' + this.id);
 });
+
 
 //TRIAL
 
@@ -124,97 +128,52 @@ $('.board-container').find('tr').click( function(){
 //   return false;
 // });
 
-
-//TRIAL
-//fetching index and grid view // stack overflow
-//
-// $('input[type="text"]').click(function(e){
-//     board = $(this).closest('table').addClass('myClass');
-//     console.log('working');
-//   });
-//
-//   $('input[type="text"]' ).click(function() {
-//      var bid = this.id; // button ID
-//      var trid = $(this).closest('tr').attr('id'); // table row ID
-//    });
-//
-//    var IDs = [];
-//    $(".board-container").find("#id").each(function(){ IDs.push(this.id); });
-
-
-
-//IF TRIAL
-// $('.board-container').one('click', function (){
-//   console.log( 'test board ' );
-//   if ('#grid-1' === true ) {
-//     console.log( '8' );
-//   } if ('#grid-2') {
-//     console.log( '1' );
-//   }
-  // } if ('#grid-3'){
-  //   console.log( '6' );
-  // } if ('#grid-4') {
-  //   console.log( '3' );
-  // } if ('#grid-5') {
-  //   console.log( '5' );
-  // } if ('#grid-6') {
-  //   console.log( '7' );
-  // } if ('#grid-7') {
-  //   console.log( '4' );
-  // } if ('#grid-8') {
-  //   console.log( '9' );
-  // } if ('#grid-4') {
-  //   console.log( '2' );
-  // }
-// });
-
-
 //REGISTERED CLICKS
 
   $("#grid-1").one('click', function (){
-    console.log("already clicked row 1 grid 1 +  ");
+    console.log("clicked row 1 grid 1");
     //value of 8
   });
 
 
   $("#grid-2").one('click', function (){
-    console.log("already clicked row 1 grid 2");
+    console.log("clicked row 1 grid 2");
     //value of 1
   });
 
   $("#grid-3").one('click', function (){
-    console.log("already clicked row 1 grid 3");
+    console.log("clicked row 1 grid 3");
     //value of 6
   });
 
   $("#grid-4").one('click', function (){
-    console.log("already clicked row 2 grid 1");
+    console.log("clicked row 2 grid 1");
     //value of 3
   });
 
 
   $("#grid-5").one('click', function (){
-    console.log("already clicked row 2 grid 2");
+    console.log("clicked row 2 grid 2");
     //value of 5
   });
 
   $("#grid-6").one('click', function (){
-    console.log("already clicked row 2 grid 3");
+    console.log("clicked row 2 grid 3");
     //value of 7
   });
 
   $("#grid-7").one('click', function (){
-    console.log("already clicked row 3 grid 1");
+    console.log("clicked row 3 grid 1");
     //value of 4
   });
 
   $("#grid-8").one('click', function (){
-    console.log("already clicked row 3 grid 2");
+    console.log("clicked row 3 grid 2");
     //value of 9
   });
 
   $("#grid-9").one('click', function (){
-    console.log("already clicked row 3 grid 3");
+    console.log("clicked row 3 grid 3");
     //value of 2
   });
 
