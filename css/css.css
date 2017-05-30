@@ -10,16 +10,17 @@ h1 {
 .grid-container{
      width: 100%;
      max-width: 1200px;
+     opacity: 0.5;
  }
 
-[class*='col-'] {
+[class*='col'] {
      float: left;
      min-height: 1px;
      width: 16.66%;
-     /*-- gutter -- */
      padding: 12px;
      background-color: #FFDCDC;
      border: 1px solid black;
+     /*opacity: rgba (0, 0 ,0 ,0.5);*/
    }
 
 .col-1{ width: 33.33%; }

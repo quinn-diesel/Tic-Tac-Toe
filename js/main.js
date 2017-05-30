@@ -67,43 +67,115 @@ console.log("check");
 //want to make it a magic square
 //first player to 15 wins
 
-// step 1 register the first click
+//GLOBAL VARIABLES
 
-var board = function (){
+// var tableID = "board";
 
-  var winnerscore = 0;
-  var player1score = 0;
-  var player2score = 0;
+// var board = function (){
+//
+//   var winnerscore = 0;
+//   var player1score = 0;
+//   var player2score = 0;
+//
+//   // var winnerscore = [15];
+//
+//   if (winnscore === 15) {
+//     console.log( player_1 || player_2 + " is the winner");
+//   } else {
+//     console.log( "It's a draw. Start again.");
+//   }
+//
+// };
+// //
 
-  if (winnscore === 15) {
-    console.log( player_1 || player_2 + " is the winner");
-  } else {
-    console.log( "It's a draw. Start again.");
-  }
-
-};
 
 
+//DOCUMENT ready
 $(document).ready(function (){
 
 //REGISTERING ONE CLICK
 
-// come back and create loop. this is the same function over and over
 
-if (true){
+//TRIAL
+//consoling on the grid on the this.id (the class.id)
+// square is the class calling on the squares
+
+$('.board-container').find('tr').click( function(){
+  var row = $(this).find('td:first').text();
+  var col = $(this).find('tr:first').text();
+  console.log('You clicked ' + row + col);
+});
+
+//TRIAL
+
+
+// <a href="#" id="pager_1" class="pagerlink" >link</a>
+//
+// $('a.pagerlink').click(function() {
+//     var id = $(this).attr('id');
+//     $container.cycle(id.replace('pager_', ''));
+//     return false;
+// });
+
+// $('.board-container').one('click', function (){
+//   var id = $(this).attr('id');
+//     $('board-container').cycle(id.replace('#', ''));
+//   console.log('test');
+//   return false;
+// });
+
+
+//TRIAL
+//fetching index and grid view // stack overflow
+//
+// $('input[type="text"]').click(function(e){
+//     board = $(this).closest('table').addClass('myClass');
+//     console.log('working');
+//   });
+//
+//   $('input[type="text"]' ).click(function() {
+//      var bid = this.id; // button ID
+//      var trid = $(this).closest('tr').attr('id'); // table row ID
+//    });
+//
+//    var IDs = [];
+//    $(".board-container").find("#id").each(function(){ IDs.push(this.id); });
+
+
+
+//IF TRIAL
+// $('.board-container').one('click', function (){
+//   console.log( 'test board ' );
+//   if ('#grid-1' === true ) {
+//     console.log( '8' );
+//   } if ('#grid-2') {
+//     console.log( '1' );
+//   }
+  // } if ('#grid-3'){
+  //   console.log( '6' );
+  // } if ('#grid-4') {
+  //   console.log( '3' );
+  // } if ('#grid-5') {
+  //   console.log( '5' );
+  // } if ('#grid-6') {
+  //   console.log( '7' );
+  // } if ('#grid-7') {
+  //   console.log( '4' );
+  // } if ('#grid-8') {
+  //   console.log( '9' );
+  // } if ('#grid-4') {
+  //   console.log( '2' );
+  // }
+// });
+
+
+//REGISTERED CLICKS
+
   $("#grid-1").one('click', function (){
-  var result1 = 8;
-  console.log("already clicked row 1 grid 1 +  " + result1);
-  return result1;
-  //value of 8
-})};
+    console.log("already clicked row 1 grid 1 +  ");
+    //value of 8
+  });
 
-  // $("#grid-1").one('click', function (){
-  //   var result1 = 8;
-  //   console.log("already clicked row 1 grid 1 +  " + result1);
-  //   return result1;
-  //   //value of 8
-  // });
 
   $("#grid-2").one('click', function (){
     console.log("already clicked row 1 grid 2");
@@ -119,6 +191,7 @@ if (true){
     console.log("already clicked row 2 grid 1");
     //value of 3
   });
+
 
   $("#grid-5").one('click', function (){
     console.log("already clicked row 2 grid 2");
@@ -155,6 +228,7 @@ if (true){
     // var $player_2 = $(player_1.reverse());
 
 //trial
+
     function player_1() {
         $(this).one("click", player_2);
       console.log('player 1 check ' + player_1);
@@ -166,6 +240,8 @@ if (true){
     }
 
     $('.board-container').one('click', player_1);
+
+    // player_2(false);
 
     // $(player_1).click(true, player_1);
     // $('.board-container').one('click', player_2);
