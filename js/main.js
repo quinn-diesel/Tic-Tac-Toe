@@ -68,127 +68,113 @@ console.log("check me out now");
 //first player to 15 wins
 
 //GLOBAL VARIABLES
+  //
+  // var tableID = "board";
+  //
+  // var registerscores = function (){
+  //
+  //   var player_1count: "X";
+  //   var player_2count: "0";
+  //
+  //   if (player_1 === true) {
+  //     console.log(player_1count);
+  //   } else (player1 !== true){
+  //     console.log(player_2count);
+  //   }
+  //
+  // };
 
-// var tableID = "board";
+  // var board = function (){
+  //
+  //   var winnerscore = 0;
+  //   var player1score = 0;
+  //   var player2score = 0;
+  //
+  //   // var winnerscore = [15];
+  //
+  //   if (winnscore === 15) {
+  //     console.log( player_1 || player_2 + " is the winner");
+  //   } else {
+  //     console.log( "It's a draw. Start again.");
+  //   }
 
-// var board = function (){
-//
-//   var winnerscore = 0;
-//   var player1score = 0;
-//   var player2score = 0;
-//
-//   // var winnerscore = [15];
-//
-//   if (winnscore === 15) {
-//     console.log( player_1 || player_2 + " is the winner");
-//   } else {
-//     console.log( "It's a draw. Start again.");
-//   }
-//
 // };
-// //
+//
 
+var play_1 = [];
+var play_2 = [];
 
+var board = [];
+
+var player_1 = 'X';
+var player_2 = "O";
+
+var currentPlayer = 'X';
 
 //DOCUMENT ready
 $(document).ready(function (){
 
-//REGISTERING ONE CLICK
 
+// player swicthing
 
-//TRIAL
-//telling the function
+// var playSwitch = function (){
+//
+//     function player_1() {
+//         $(this)
+//           .one("click", player_2);
+//         console.log('player 1 played');
+//     }
+//
+//     function player_2() {
+//         $(this)
+//           .one("click", player_1);
+//         console.log('player 2 played');
+//     }
+//
+//     $('.board-container').one('click', player_1);
+//
+// };
+//
+// playSwitch();
 
-
+// click once for each grid
 $('.col').one('click',( function(){
   var row = $(this).index();
   var id = this.id;
-  console.log('You clicked ' + this.id);
+
+
+//this will also help to make the start button
+  $(this).html(currentPlayer);
+
+//game logic
+
+
+
+
+//switching player logic
+  if( currentPlayer === 'X'){
+    currentPlayer = 'O';
+    $(this).css("backgroundColor", "yellow");
+    console.log( " " + this.id);
+  } else {
+    $(this).css("backgroundColor", "blue");
+    currentPlayer = 'X';
+    console.log(" " + this.id);
+  }
+
 }));
 
 
-// clicker count
 
 
+// if the one function is true return the opposite reult and switch it around
+// if the other fuctnion is true the first results and switch around
 
-// Register the players
-
-    // var player_1 = true;
-    // var player_2 = !player_1;
-    // var $player_2 = $(player_1.reverse());
-
-
-//trial stack overflow
-
-  // var player_one = true;
-  // function display_input(square){
-  //     if ( player_one === true ){
-  //         document.getElementById(square).innerHTML = "X";
-  //         player_one = 0;
-  //     } else {
-  //         document.getElementById(square).innerHTML = "O";
-  //         player_one = 1;
-  //     }
+  // if (currentPlayer = true){
+  //   return !currentPlayer;
+  // } else {
+  //   return player2;
   // }
-
-// //swicthing players with true
-// var players = function (){
-//
-//   var player_1 = true;
-//   var player_2 = !player_1;
-//
-// for (var i = 0; i < player_1.length; i++) {
-//   if (player_1 === true ) {
-//     return player_2;
-//     // console.log('test 1');
-//   } else {
-//     // console.log('test 2');
-//     return player_1;
-//   }
-// }
-// };
-
-
-//   $(this).one('click', function (){
-//     if (player_1 === true ) {
-//       return player_2;
-//       // console.log('test 1');
-//     } else {
-//       // console.log('test 2');
-//       return player_1;
-//     }
-//   });
-// };
-
-
-//trial
-    function player_1() {
-        $(this).one("click", player_2);
-      console.log('player 1 played');
-    }
-
-    function player_2() {
-        $(this).one("click", player_1);
-      console.log('player 2 played');
-    }
-
-    $('.board-container').one('click', player_1);
-    // $('.board-container').one('click', player_2);
-
-
-
-  // //register the player scores
-  //
-  // var player1score: 0;
-  // var player2sore: 0;
-  //
-  // var score1 = function (player1score){
-  // }
-  // var score2 = functon (player2score){
-  // }
-  //
-  //
-  // //register who gets to 15 first
 
 
 
