@@ -9,18 +9,6 @@ console.log("check me out now");
 // You will be working individually for this project, but we'll be guiding you along the process and helping as you go. Show us what you've got!
 
 
-//WHAT YOU'VE LEARNED
-
-// By the time you submit this project, you will have covered new ground in many of the big themes of the course:
-//
-// Command Line: Practice interacting with the computer and navigating the filesystem from the command line.
-// Source Control: Manage and interact with a git repository to store changes to code.
-// Programming Fundamentals: Work with objects, constructors, events, while learning how to strategically solve problems and resolve errors.
-// Web Fundamentals: Learn how communication happens over the internet, and how to structure, style, and animate documents within a browser. Also learn how to respond to actions your users take and the data they input into the browser.
-// Browser Applications: Dive into CSS, Sass, and how to use libraries and frameworks to get lots of style for free.
-// Deployment: Host a static web site in a managed hosting environment.
-// Products and Teams: Document your code and your code repository so others understand what you've built.
-
 //Big Goals
 
 // Build a web application from scratch, without a starter codebase
@@ -50,15 +38,6 @@ console.log("check me out now");
 // A git repository hosted on Github, with a link to your hosted game, and frequent commits dating back to the very beginning of the project
 // A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
 
-// Suggested Ways to Get Started
-//
-// Break the project down into different components (data, presentation, views, style, DOM manipulation) and brainstorm each component individually. Use whiteboards!
-// Use your Development Tools (console.log, inspector, alert statements, etc) to debug and solve problems
-// Work through the lessons in class, ask questions and come to office hours when you need to. Think about adding relevant code to your Tic Tac Toe game each night, instead of, you know... procrastinating.
-// Commit early, commit often. Don’t be afraid to break something because you can always go back in time to a previous version.
-// Check out Tutorial and Documentation resources (jQuery tutorial) at home to better understand what you’ll be getting into.
-// Don’t be afraid to write code that you know you will have to remove later. Create temporary elements (buttons, links, etc) that trigger events if real data is not available. For example, if you’re trying to figure out how to change some text when the game is over but you haven’t solved the win/lose game logic, you can create a button to simulate that until then.
-
 // set up the object that is going to be accessed when the players interact with the game
 // the logic behind the game is going
 // the result coming DOM is going to dictate how the players are going to be interacting with the game
@@ -68,74 +47,56 @@ console.log("check me out now");
 //first player to 15 wins
 
 //GLOBAL VARIABLES
-  //
-  // var tableID = "board";
-  //
-  // var registerscores = function (){
-  //
-  //   var player_1count: "X";
-  //   var player_2count: "0";
-  //
-  //   if (player_1 === true) {
-  //     console.log(player_1count);
-  //   } else (player1 !== true){
-  //     console.log(player_2count);
-  //   }
-  //
-  // };
 
-  // var board = function (){
-  //
-  //   var winnerscore = 0;
-  //   var player1score = 0;
-  //   var player2score = 0;
-  //
-  //   // var winnerscore = [15];
-  //
-  //   if (winnscore === 15) {
-  //     console.log( player_1 || player_2 + " is the winner");
-  //   } else {
-  //     console.log( "It's a draw. Start again.");
-  //   }
 
-// };
-//
+//store board & player moves
 
-var play_1 = [];
-var play_2 = [];
+var game = {
 
-var board = [];
+  moveCounter: 0;
+  currentPlayer : "X";
+  player1: "X";
+  player2: "O";
+  gamereset = "9";
+  startgame = false;
 
-var player_1 = 'X';
-var player_2 = "O";
 
-var currentPlayer = 'X';
+  var board = [null, null, null, null, null, null, null, null, null];
 
-//DOCUMENT ready
+//function to check for winning combination
+  checkwin: function (){
+
+    if (board["X"] === board[0] && board["X"] === board[1] && board["X"] === board[2] && board ["X"] !== null) {
+      // return startgame true;
+    } if (board["X"] === board[0] && board["X"] === board[3] && board["X"] === board[6] && board ["X"] !== null){
+      // return startgame true;
+    } if (board["X"] === board[1] && board["X"] === board[4] && board["X"] === board[7] && board ["X"] !== null){
+      // return startgame true;
+    } if (board["X"] === board[3] && board["X"] === board[4] && board["X"] === board[5] && board ["X"] !== null){
+      // return startgame true;
+    } if (board["X"] === board[2] && board["X"] === board[5] && board["X"] === board[8] && board ["X"] !== null){
+      // return startgame true;
+    } if (board["X"] === board[5] && board["X"] === board[6] && board["X"] === board[7] && board ["X"] !== null){
+      // return startgame true;
+    } if (board["X"] === board[0] && board["X"] === board[4] && board["X"] === board[8] && board ["X"] !== null){
+      // return startgame true;
+    } if (board["X"] === board[2] && board["X"] === board[4] && board["X"] === board[6] && board ["X"] !== null){
+      return startgame true;
+    } else {
+      return
+    }
+
+  };
+
+
+
+
+
+};// game ready secction
+
+//DOM manipulation
 $(document).ready(function (){
 
-
-// player swicthing
-
-// var playSwitch = function (){
-//
-//     function player_1() {
-//         $(this)
-//           .one("click", player_2);
-//         console.log('player 1 played');
-//     }
-//
-//     function player_2() {
-//         $(this)
-//           .one("click", player_1);
-//         console.log('player 2 played');
-//     }
-//
-//     $('.board-container').one('click', player_1);
-//
-// };
-//
-// playSwitch();
 
 // click once for each grid
 $('.col').one('click',( function(){
@@ -143,38 +104,48 @@ $('.col').one('click',( function(){
   var id = this.id;
 
 
-//this will also help to make the start button
+//Game logic
+
+
+// create turn counter - merge this into the click counter
+// have an automatic click counter
+
+
+//start on player 1
   $(this).html(currentPlayer);
-
-//game logic
-
-
 
 
 //switching player logic
   if( currentPlayer === 'X'){
     currentPlayer = 'O';
     $(this).css("backgroundColor", "yellow");
+    console.log( $(this).index() );
+
+      //creating variables to change the id
+    var boardIndex = parseInt( this.id );
+
+      //subbing in the X to the board array
+    board[ boardIndex ] = 'X';
     console.log( " " + this.id);
+
+    //functions to set what is happening
+    game.checkwin
+
+
+
+
+
+    //switch it back to the other player
   } else {
     $(this).css("backgroundColor", "blue");
     currentPlayer = 'X';
+
+    console.log( $(this).index() );
+      board.push($(this).index());
     console.log(" " + this.id);
   }
 
 }));
-
-
-
-
-// if the one function is true return the opposite reult and switch it around
-// if the other fuctnion is true the first results and switch around
-
-  // if (currentPlayer = true){
-  //   return !currentPlayer;
-  // } else {
-  //   return player2;
-  // }
 
 
 
