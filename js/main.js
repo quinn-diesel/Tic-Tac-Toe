@@ -141,85 +141,93 @@ var game = {
 
 $(document).ready(function(){
 
+//Animate
+  $(window).on('mouseenter', (function (){
+      $('h1').slideDown(1500);
+    }));
 
-  // create a separate click function the reset
+  $(window).on('mouseenter', (function (){
+      $('.row').delay(1500).slideDown(10000);
+    }));
+
+  $(window).on('mouseenter', (function (){
+      $('#reset').delay(2000).slideDown(1500);
+    }));
+
+  $(window).on('mouseenter', (function (){
+      $('#instructions').delay(3000).slideDown(3000);
+    }));
+
+
+  // RESET FUNCITON
   $("#reset").on('click', function (){
     console.log('reset!');
     $('.board-container td').html('').css('backgroundColor', '');
+    $('.endMessage').html('').css('backgroundColor', '');
     game.reset();
   });
 
 
-  // clicks for the grid
-  $('.col').one('click', function(){
+  // GAME TRACKING
+  $('.col').click(function(){
     var row = $(this).index();
     var id = this.id;
     var boardIndex = parseInt( this.id );
 
-    //need to check to see if someone is using the square
-    //check the array to see if it is not null
-    // only allow clicks if
 
-
-  //Start on player 1
+  //START GAME
     $(this).html(game.currentPlayer);
 
-    //start with player X
+
     if( game.currentPlayer === 'X'){
 
-      // css change the colour
-      $(this).css("backgroundColor", "red");
-      //index the grid id to the board
-      game.board[ boardIndex ] = game.currentPlayer;
-        console.log( " " + this.id);
-      // count the number of moves
-      game.moveCounter += 1;
-      // game.board();
-      // winStatus ();
-      if( game.checkWin() ){
-        // show win
-        // call the div that is a win
-        // call reset
-        // $("#player1win").css ({"display": "block", "text-align": "center"});
-        $("#player1win").css({"display": "block", "font-color": "red,"});
-        console.log('win for ' + game.currentPlayer);
-      } else if(game.moveCounter === 9){
-        //call the div that is a draw
-        //call reset
-        $("#draw").css({"display": "block", "text-align": "center"});
-        console.log('draw!');
+      if (game.board[ boardIndex ] === null){
+        $(this).css("backgroundColor", "red");
+        game.board[ boardIndex ] = game.currentPlayer;
+          console.log( " " + this.id);
+        game.moveCounter += 1;
+        //checkwin
+        if( game.checkWin() ){
+          $("#player1win").css({"display": "block", "font-color": "red,"});
+          console.log('win for ' + game.currentPlayer);
+        } else if(game.moveCounter === 9){
+          $("#draw").css({"display": "block", "text-align": "center"});
+          console.log('draw!');
+        }
+
+      else {
+        //display message
+        console.log("pick another option");
       }
 
       game.currentPlayer = 'O'; // switch players
 
-    } else {
-      // css change the colour
-      $(this).css("backgroundColor", "blue");
-      //index the player id to the board array
-      game.board[ boardIndex ] = game.currentPlayer;
-        console.log(" " + this.id);
-      //count the number of moves
-      game.moveCounter += 1;
-      // winStatus ();
-      // game.board();
-
-      if( game.checkWin() ){
-        // show win
-        // call the div that is a win
-        // call reset
-        // $('h2').show('visibility': 'visible');
-        $("#player2win").css({"display": "block", "font-color": "blue,"});
-        console.log('win for ' + game.currentPlayer);
-      } else if(game.moveCounter === 9){
-        //call the div that is a draw
-        //call reset
-        $("#draw").css({"display": "block", "text-align": "center"});
-        console.log('draw!');
-      }
-
-      game.currentPlayer = 'X'; // switch players
     }
 
+    //SWITCH TO PLAYER 2
+  } else {
+
+      if(game.board[ boardIndex ] === null){
+        $(this).css("backgroundColor", "blue");
+        game.board[ boardIndex ] = game.currentPlayer;
+          console.log(" " + this.id);
+        game.moveCounter += 1;
+          //checkwin statement
+          if( game.checkWin() ){
+            $("#player2win").css({"display": "block", "font-color": "blue,"});
+            console.log('win for ' + game.currentPlayer);
+          } else if(game.moveCounter === 9){
+            $("#draw").css({"display": "block", "text-align": "center"});
+            console.log('draw!');
+          }
+
+      else {
+        //
+        console.log("pick another option");
+      }
+      game.currentPlayer = 'X'; // switch players
+      }
+    }
 
   }); // $('.col').one('click')
 
