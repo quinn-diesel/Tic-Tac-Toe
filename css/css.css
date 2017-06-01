@@ -13,16 +13,26 @@ h1 {
      opacity: 0.5;
  }
 
+ h2.hidden {
+   color: white;
+   visibility: hidden;
+   display: inline-block;
+ }
+
 .col {
-     float: left;
+     float: absolute;
      height: 10px;
      width: 33.33%;
      padding: 12px;
      background-color: #FFDCDC;
      border: 1px solid black;
+     display: inline-block;
      /*opacity: rgba (0, 0 ,0 ,0.5);*/
    }
 
-h2.hidden {
-  visibility: hidden;
+#resetBoard {
+  display:inline-block;
+  position: absolute;
+  color: white;
+  border: 1px solid white;
 }

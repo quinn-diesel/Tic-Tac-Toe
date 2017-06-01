@@ -49,7 +49,7 @@ var game = {
 
   moveCounter: 0,
   currentPlayer: "X",
-  // checkWin: false,
+  win: false,
 
   player:{
 
@@ -101,10 +101,12 @@ var game = {
 
   },
 
-  winstatus: function (){
-    if (this.checkWin){
-      console.log('have a winner');
-    }
+
+  reset: function (){
+
+    game.board = [ null, null, null, null, null, null, null, null, null ];
+    game.win = false;
+
   },
 
   // if (checkWin){
@@ -124,6 +126,13 @@ var game = {
     },
   //
 
+  // winStatus: function (){
+  //   if (this.checkWin){
+  //     console.log(');
+  //     have a winner');
+  //   }
+  // },
+
 };
 
 
@@ -133,18 +142,18 @@ var game = {
 //DOM MANIUPULATION SECTION
 $(document).ready(function (){
 
-  // click once for each grid
+  // clicks for the grid
   $('.col').one('click',( function(){
     var row = $(this).index();
     var id = this.id;
     var boardIndex = parseInt( this.id );
     var checkWin = game.checkWin();
-    var startGame = false;
 
-  //Start on player 1
+
+//Start on player 1
     $(this).html(game.currentPlayer);
 
-  //switching player logic
+    //switching player logic
     if( game.currentPlayer === 'X'){
       game.currentPlayer = 'O';
       // css change the colour
@@ -164,19 +173,24 @@ $(document).ready(function (){
       console.log(" " + this.id);
       //count the number of moves
       game.moveCounter += 1;
+    };
 
-    }
-
-    if (game.checkWin) {
-      //if the game wins then i need to reset the game.
+    if(game.win !== game.board ){
       //need to record the score
-      game.board();
-      console.log('check win ' + game.checkWin());
-    } if (game.draw) {
+      $(this).show('.h2');
+    };
 
-      console.log('game is a draw ' + game.draw());
-    }
+// hide the banner th at comes up when the person is playing
+// think about the way that you select the clicks on the DOM
 
-  }));
+//if the game wins then i need to reset the game.
+// need to revert the board back
+// need to set the click again
+//
+// create a separate click function the reset
+    $("#reset").on('click', function (){
+      $('.col')[0].reset();
+      game.reset();
+    });
 
-});
+}));
