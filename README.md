@@ -29,3 +29,9 @@ warn people about the bugs there are
 what are the things that need to be done
 
 think about the nesting of different objects
+
+
+css style
+tron theme
+
+help codepen

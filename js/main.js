@@ -142,18 +142,6 @@ var game = {
 $(document).ready(function(){
 
 
-
-
-  // need to run through the combinations to get the win factor
-  // $(this).on('click', function (){
-  //   if (game.win !== game.board[true] ){
-  //     game.winStatus();
-  //     $('h2').show();
-  //   } if (game.moveCounter === 9){
-  //     console.log('please reset game');
-  //   }
-  // });
-
   // create a separate click function the reset
   $("#reset").on('click', function (){
     console.log('reset!');
@@ -177,7 +165,7 @@ $(document).ready(function(){
   //Start on player 1
     $(this).html(game.currentPlayer);
 
-    //switching player logic
+    //start with player X
     if( game.currentPlayer === 'X'){
 
       // css change the colour
@@ -189,16 +177,17 @@ $(document).ready(function(){
       game.moveCounter += 1;
       // game.board();
       // winStatus ();
-
       if( game.checkWin() ){
         // show win
         // call the div that is a win
         // call reset
-        $("#palyer1win").css ("display", "inline-block");
+        // $("#player1win").css ({"display": "block", "text-align": "center"});
+        $("#player1win").css({"display": "block", "font-color": "red,"});
         console.log('win for ' + game.currentPlayer);
       } else if(game.moveCounter === 9){
         //call the div that is a draw
         //call reset
+        $("#draw").css({"display": "block", "text-align": "center"});
         console.log('draw!');
       }
 
@@ -220,11 +209,12 @@ $(document).ready(function(){
         // call the div that is a win
         // call reset
         // $('h2').show('visibility': 'visible');
-        $("#player2win").css ("display", "inline-block");
+        $("#player2win").css({"display": "block", "font-color": "blue,"});
         console.log('win for ' + game.currentPlayer);
       } else if(game.moveCounter === 9){
         //call the div that is a draw
         //call reset
+        $("#draw").css({"display": "block", "text-align": "center"});
         console.log('draw!');
       }
 
