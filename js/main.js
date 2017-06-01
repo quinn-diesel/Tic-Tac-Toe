@@ -181,7 +181,7 @@ $(document).ready(function(){
     if( game.currentPlayer === 'X'){
 
       // css change the colour
-      $(this).css("backgroundColor", "yellow");
+      $(this).css("backgroundColor", "red");
       //index the grid id to the board
       game.board[ boardIndex ] = game.currentPlayer;
         console.log( " " + this.id);
@@ -194,6 +194,7 @@ $(document).ready(function(){
         // show win
         // call the div that is a win
         // call reset
+        $("#palyer1win").css ("display", "inline-block");
         console.log('win for ' + game.currentPlayer);
       } else if(game.moveCounter === 9){
         //call the div that is a draw
@@ -218,6 +219,8 @@ $(document).ready(function(){
         // show win
         // call the div that is a win
         // call reset
+        // $('h2').show('visibility': 'visible');
+        $("#player2win").css ("display", "inline-block");
         console.log('win for ' + game.currentPlayer);
       } else if(game.moveCounter === 9){
         //call the div that is a draw
@@ -228,15 +231,6 @@ $(document).ready(function(){
       game.currentPlayer = 'X'; // switch players
     }
 
-
-
-// hide the banner th at comes up when the person is playing
-// think about the way that you select the clicks on the DOM
-
-//if the game wins then i need to reset the game.
-// need to revert the board back
-// need to set the click again
-//
 
   }); // $('.col').one('click')
 
