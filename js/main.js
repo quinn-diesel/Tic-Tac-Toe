@@ -70,30 +70,31 @@ var game = {
 
   checkWin: function () {
 
+
     // make a minimum of 5 moves to be done for the game
-    if( game.moveCounter < 5) {
+    if( game.moveCounter < 4) {
       return false;
     }
 
     var board = game.board;
     // var player = game.player;
 //
-    if (board[0] === board[1] && board[0] === board[2] && board [1]!== null) {
+    if (board[0] === board[1] && board[0] === board[2] && board[1]!== null) {
       // console.log(game.player);
       return true;
-    } if (board[0] === board[3] && board[0] === board[6] && board [0] !== null){
+    } if (board[0] === board[3] && board[0] === board[6] && board[0] !== null){
       return true;
-    } if (board[1] === board[4] && board[1] === board[7] && board [1] !== null){
+    } if (board[1] === board[4] && board[1] === board[7] && board[1] !== null){
       return true;
-    } if (board[3] === board[4] && board[3] === board[5] && board [3] !== null){
+    } if (board[3] === board[4] && board[3] === board[5] && board[3] !== null){
       return true;
-    } if (board[2] === board[5] && board[2] === board[8] && board [2] !== null){
+    } if (board[2] === board[5] && board[2] === board[8] && board[2] !== null){
       return true;
-    } if (board[6] === board[7] && board[6] === board[8] && board [6] !== null){
+    } if (board[6] === board[7] && board[6] === board[8] && board[6] !== null){
       return true;
-    } if (board[0] === board[4] && board[0] === board[8] && board [0] !== null){
+    } if (board[0] === board[4] && board[0] === board[8] && board[0] !== null){
       return true;
-    } if (board[2] === board[4] && board[2] === board[6] && board [2] !== null){
+    } if (board[2] === board[4] && board[2] === board[6] && board[2] !== null){
       return true;
     } else {
       return false;
@@ -106,12 +107,10 @@ var game = {
 
     game.board = [ null, null, null, null, null, null, null, null, null ];
     game.win = false;
+    game.moveCounter = 0;
+
 
   },
-
-  // if (checkWin){
-  //   console.log("We have a winner");
-  // },
 
   // reset board function
   draw: function (){
@@ -126,12 +125,11 @@ var game = {
     },
   //
 
-  // winStatus: function (){
-  //   if (this.checkWin){
-  //     console.log(');
-  //     have a winner');
-  //   }
-  // },
+  winStatus: function (){
+    if (this.win === this.checkWin ){
+      console.log('have a winner');
+    }
+  },
 
 };
 
@@ -140,45 +138,97 @@ var game = {
 
 
 //DOM MANIUPULATION SECTION
-$(document).ready(function (){
+
+$(document).ready(function(){
+
+
+
+
+  // need to run through the combinations to get the win factor
+  // $(this).on('click', function (){
+  //   if (game.win !== game.board[true] ){
+  //     game.winStatus();
+  //     $('h2').show();
+  //   } if (game.moveCounter === 9){
+  //     console.log('please reset game');
+  //   }
+  // });
+
+  // create a separate click function the reset
+  $("#reset").on('click', function (){
+    console.log('reset!');
+    $('.board-container td').html('').css('backgroundColor', '');
+    game.reset();
+  });
+
 
   // clicks for the grid
-  $('.col').one('click',( function(){
+  $('.col').one('click', function(){
     var row = $(this).index();
     var id = this.id;
     var boardIndex = parseInt( this.id );
-    var checkWin = game.checkWin();
 
 
-//Start on player 1
+    //need to check to see if someone is using the square
+    //check the array to see if it is not null
+    // only allow clicks if
+
+
+  //Start on player 1
     $(this).html(game.currentPlayer);
 
     //switching player logic
     if( game.currentPlayer === 'X'){
-      game.currentPlayer = 'O';
+
       // css change the colour
       $(this).css("backgroundColor", "yellow");
       //index the grid id to the board
       game.board[ boardIndex ] = game.currentPlayer;
-      console.log( " " + this.id);
+        console.log( " " + this.id);
       // count the number of moves
       game.moveCounter += 1;
+      // game.board();
+      // winStatus ();
+
+      if( game.checkWin() ){
+        // show win
+        // call the div that is a win
+        // call reset
+        console.log('win for ' + game.currentPlayer);
+      } else if(game.moveCounter === 9){
+        //call the div that is a draw
+        //call reset
+        console.log('draw!');
+      }
+
+      game.currentPlayer = 'O'; // switch players
 
     } else {
       // css change the colour
       $(this).css("backgroundColor", "blue");
-      game.currentPlayer = 'X';
       //index the player id to the board array
       game.board[ boardIndex ] = game.currentPlayer;
-      console.log(" " + this.id);
+        console.log(" " + this.id);
       //count the number of moves
       game.moveCounter += 1;
-    };
+      // winStatus ();
+      // game.board();
 
-    if(game.win !== game.board ){
-      //need to record the score
-      $(this).show('.h2');
-    };
+      if( game.checkWin() ){
+        // show win
+        // call the div that is a win
+        // call reset
+        console.log('win for ' + game.currentPlayer);
+      } else if(game.moveCounter === 9){
+        //call the div that is a draw
+        //call reset
+        console.log('draw!');
+      }
+
+      game.currentPlayer = 'X'; // switch players
+    }
+
+
 
 // hide the banner th at comes up when the person is playing
 // think about the way that you select the clicks on the DOM
@@ -187,10 +237,7 @@ $(document).ready(function (){
 // need to revert the board back
 // need to set the click again
 //
-// create a separate click function the reset
-    $("#reset").on('click', function (){
-      $('.col')[0].reset();
-      game.reset();
-    });
 
-}));
+  }); // $('.col').one('click')
+
+}); // $(document).ready()

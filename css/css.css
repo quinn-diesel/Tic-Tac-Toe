@@ -30,9 +30,10 @@ h1 {
      /*opacity: rgba (0, 0 ,0 ,0.5);*/
    }
 
-#resetBoard {
+#reset {
   display:inline-block;
   position: absolute;
   color: white;
   border: 1px solid white;
+  cursor: pointer;
 }

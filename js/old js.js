@@ -17,3 +17,13 @@
     // } else if ( 'O', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'O') {
     //   console.log("Win 8" ); 2, 4, 6,
     // }
+
+
+    // //check for clicks
+    //   $(this).html(game.board);
+    //      if (game.board === 'X' || game.board === "o") {
+    //       console.log('dont allow click');
+    //     } else {
+    //       console.log('allow click');
+    //      }
+    //   //  };
