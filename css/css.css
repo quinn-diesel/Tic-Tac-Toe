@@ -13,16 +13,16 @@ h1 {
      opacity: 0.5;
  }
 
-[class*='col'] {
+.col {
      float: left;
-     min-height: 1px;
-     width: 16.66%;
+     height: 10px;
+     width: 33.33%;
      padding: 12px;
      background-color: #FFDCDC;
      border: 1px solid black;
      /*opacity: rgba (0, 0 ,0 ,0.5);*/
    }
 
-.col-1{ width: 33.33%; }
-.col-2{ width: 33.33%; }
-.col-3{ width: 33.33%; }
+h2.hidden {
+  visibility: hidden;
+}

@@ -38,115 +38,145 @@ console.log("check me out now");
 // A git repository hosted on Github, with a link to your hosted game, and frequent commits dating back to the very beginning of the project
 // A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
 
-// set up the object that is going to be accessed when the players interact with the game
-// the logic behind the game is going
-// the result coming DOM is going to dictate how the players are going to be interacting with the game
 
 //nOtes
 //want to make it a magic square
 //first player to 15 wins
 
-//GLOBAL VARIABLES
-
-
-//store board & player moves
+//GAME VARAIBLES SECTIONS
 
 var game = {
 
-  moveCounter: 0;
-  currentPlayer : "X";
-  player1: "X";
-  player2: "O";
-  gamereset = "9";
-  startgame = false;
+  moveCounter: 0,
+  currentPlayer: "X",
+  // checkWin: false,
+
+  player:{
+
+    player1: {
+      name: "X",
+      score:  0,
+    },
+
+    player2: {
+      name: "O",
+      score: 0,
+    },
+
+  }, // end players
+
+ board: [ null, null, null, null, null, null, null, null, null ],
 
 
-  var board = [null, null, null, null, null, null, null, null, null];
+  checkWin: function () {
 
-//function to check for winning combination
-  checkwin: function (){
-
-    if (board["X"] === board[0] && board["X"] === board[1] && board["X"] === board[2] && board ["X"] !== null) {
-      // return startgame true;
-    } if (board["X"] === board[0] && board["X"] === board[3] && board["X"] === board[6] && board ["X"] !== null){
-      // return startgame true;
-    } if (board["X"] === board[1] && board["X"] === board[4] && board["X"] === board[7] && board ["X"] !== null){
-      // return startgame true;
-    } if (board["X"] === board[3] && board["X"] === board[4] && board["X"] === board[5] && board ["X"] !== null){
-      // return startgame true;
-    } if (board["X"] === board[2] && board["X"] === board[5] && board["X"] === board[8] && board ["X"] !== null){
-      // return startgame true;
-    } if (board["X"] === board[5] && board["X"] === board[6] && board["X"] === board[7] && board ["X"] !== null){
-      // return startgame true;
-    } if (board["X"] === board[0] && board["X"] === board[4] && board["X"] === board[8] && board ["X"] !== null){
-      // return startgame true;
-    } if (board["X"] === board[2] && board["X"] === board[4] && board["X"] === board[6] && board ["X"] !== null){
-      return startgame true;
-    } else {
-      return
+    // make a minimum of 5 moves to be done for the game
+    if( game.moveCounter < 5) {
+      return false;
     }
 
-  };
+    var board = game.board;
+    // var player = game.player;
+//
+    if (board[0] === board[1] && board[0] === board[2] && board [1]!== null) {
+      // console.log(game.player);
+      return true;
+    } if (board[0] === board[3] && board[0] === board[6] && board [0] !== null){
+      return true;
+    } if (board[1] === board[4] && board[1] === board[7] && board [1] !== null){
+      return true;
+    } if (board[3] === board[4] && board[3] === board[5] && board [3] !== null){
+      return true;
+    } if (board[2] === board[5] && board[2] === board[8] && board [2] !== null){
+      return true;
+    } if (board[6] === board[7] && board[6] === board[8] && board [6] !== null){
+      return true;
+    } if (board[0] === board[4] && board[0] === board[8] && board [0] !== null){
+      return true;
+    } if (board[2] === board[4] && board[2] === board[6] && board [2] !== null){
+      return true;
+    } else {
+      return false;
+    }
+
+  },
+
+  winstatus: function (){
+    if (this.checkWin){
+      console.log('have a winner');
+    }
+  },
+
+  // if (checkWin){
+  //   console.log("We have a winner");
+  // },
+
+  // reset board function
+  draw: function (){
+    var counter = this.moveCounter;
+
+      if (counter === 9) {
+        console.log("restart the game");
+        // return true;
+      } else {
+        return false;
+      }
+    },
+  //
+
+};
 
 
+//change the screen based on what is happening
 
 
-
-};// game ready secction
-
-//DOM manipulation
+//DOM MANIUPULATION SECTION
 $(document).ready(function (){
 
-
-// click once for each grid
-$('.col').one('click',( function(){
-  var row = $(this).index();
-  var id = this.id;
-
-
-//Game logic
-
-
-// create turn counter - merge this into the click counter
-// have an automatic click counter
-
-
-//start on player 1
-  $(this).html(currentPlayer);
-
-
-//switching player logic
-  if( currentPlayer === 'X'){
-    currentPlayer = 'O';
-    $(this).css("backgroundColor", "yellow");
-    console.log( $(this).index() );
-
-      //creating variables to change the id
+  // click once for each grid
+  $('.col').one('click',( function(){
+    var row = $(this).index();
+    var id = this.id;
     var boardIndex = parseInt( this.id );
+    var checkWin = game.checkWin();
+    var startGame = false;
 
-      //subbing in the X to the board array
-    board[ boardIndex ] = 'X';
-    console.log( " " + this.id);
+  //Start on player 1
+    $(this).html(game.currentPlayer);
 
-    //functions to set what is happening
-    game.checkwin
+  //switching player logic
+    if( game.currentPlayer === 'X'){
+      game.currentPlayer = 'O';
+      // css change the colour
+      $(this).css("backgroundColor", "yellow");
+      //index the grid id to the board
+      game.board[ boardIndex ] = game.currentPlayer;
+      console.log( " " + this.id);
+      // count the number of moves
+      game.moveCounter += 1;
 
+    } else {
+      // css change the colour
+      $(this).css("backgroundColor", "blue");
+      game.currentPlayer = 'X';
+      //index the player id to the board array
+      game.board[ boardIndex ] = game.currentPlayer;
+      console.log(" " + this.id);
+      //count the number of moves
+      game.moveCounter += 1;
 
+    }
 
+    if (game.checkWin) {
+      //if the game wins then i need to reset the game.
+      //need to record the score
+      game.board();
+      console.log('check win ' + game.checkWin());
+    } if (game.draw) {
 
+      console.log('game is a draw ' + game.draw());
+    }
 
-    //switch it back to the other player
-  } else {
-    $(this).css("backgroundColor", "blue");
-    currentPlayer = 'X';
+  }));
 
-    console.log( $(this).index() );
-      board.push($(this).index());
-    console.log(" " + this.id);
-  }
-
-}));
-
-
-
-});//document ready break
+});
