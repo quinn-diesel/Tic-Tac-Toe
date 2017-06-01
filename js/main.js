@@ -156,7 +156,6 @@ $(document).ready(function(){
     var id = this.id;
     var boardIndex = parseInt( this.id );
 
-
     //need to check to see if someone is using the square
     //check the array to see if it is not null
     // only allow clicks if
