@@ -115,7 +115,6 @@ var game = {
   // reset board function
   draw: function (){
     var counter = this.moveCounter;
-
       if (counter === 9) {
         console.log("restart the game");
         // return true;
@@ -181,7 +180,7 @@ $(document).ready(function(){
 
     if( game.currentPlayer === 'X'){
 
-      if (game.board[ boardIndex ] === null){
+      if (game.board[ boardIndex ] === null || game.board[boardIndex] !== "O" || game.board[boardIndex] !== "X" ) {
         $(this).css("backgroundColor", "red");
         game.board[ boardIndex ] = game.currentPlayer;
           console.log( " " + this.id);
@@ -197,7 +196,7 @@ $(document).ready(function(){
 
       else {
         //display message
-        console.log("pick another option");
+        console.log("pick another option 1");
       }
 
       game.currentPlayer = 'O'; // switch players
@@ -207,11 +206,11 @@ $(document).ready(function(){
     //SWITCH TO PLAYER 2
   } else {
 
-      if(game.board[ boardIndex ] === null){
+      if(game.board[ boardIndex ] === null || game.board[boardIndex] !== "O" || game.board[boardIndex] !== "X"){
         $(this).css("backgroundColor", "blue");
         game.board[ boardIndex ] = game.currentPlayer;
           console.log(" " + this.id);
-        game.moveCounter += 1;
+          game.moveCounter += 1;
           //checkwin statement
           if( game.checkWin() ){
             $("#player2win").css({"display": "block", "font-color": "blue,"});
@@ -223,7 +222,7 @@ $(document).ready(function(){
 
       else {
         //
-        console.log("pick another option");
+        console.log("pick another option 2");
       }
       game.currentPlayer = 'X'; // switch players
       }
