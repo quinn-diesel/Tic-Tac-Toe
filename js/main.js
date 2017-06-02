@@ -51,25 +51,10 @@ var game = {
   currentPlayer: "X",
   win: false,
 
-  player:{
-
-    player1: {
-      name: "X",
-      score:  0,
-    },
-
-    player2: {
-      name: "O",
-      score: 0,
-    },
-
-  }, // end players
-
  board: [ null, null, null, null, null, null, null, null, null ],
 
 
   checkWin: function () {
-
 
     // make a minimum of 5 moves to be done for the game
     if( game.moveCounter < 4) {
@@ -161,8 +146,8 @@ $(document).ready(function(){
   // RESET FUNCITON
   $("#reset").on('click', function (){
     console.log('reset!');
-    $('.board-container td').html('').css('backgroundColor', '');
     $('.endMessage').html('').css('backgroundColor', '');
+    $('.board-container td').html('').css('backgroundColor', '');
     game.reset();
   });
 
@@ -177,10 +162,19 @@ $(document).ready(function(){
   //START GAME
     $(this).html(game.currentPlayer);
 
+    if (game.board[ boardIndex ] || game.baord ) {
+      console.log("pick another option 1");
+      return;
+    }
 
-    if( game.currentPlayer === 'X'){
 
-      if (game.board[ boardIndex ] === null || game.board[boardIndex] !== "O" || game.board[boardIndex] !== "X" ) {
+      // if (game.board[ boardIndex ]) {
+      //   console.log("pick another option 1");
+      //   return;
+      // }
+// debugger;
+
+      if (game.currentPlayer === 'X' ) {
         $(this).css("backgroundColor", "red");
         game.board[ boardIndex ] = game.currentPlayer;
           console.log( " " + this.id);
@@ -194,19 +188,11 @@ $(document).ready(function(){
           console.log('draw!');
         }
 
-      else {
-        //display message
-        console.log("pick another option 1");
-      }
-
-      game.currentPlayer = 'O'; // switch players
-
-    }
-
     //SWITCH TO PLAYER 2
   } else {
+// debugger;
 
-      if(game.board[ boardIndex ] === null || game.board[boardIndex] !== "O" || game.board[boardIndex] !== "X"){
+      if(game.currentPlayer === 'O'){
         $(this).css("backgroundColor", "blue");
         game.board[ boardIndex ] = game.currentPlayer;
           console.log(" " + this.id);
@@ -219,14 +205,20 @@ $(document).ready(function(){
             $("#draw").css({"display": "block", "text-align": "center"});
             console.log('draw!');
           }
-
-      else {
-        //
-        console.log("pick another option 2");
-      }
-      game.currentPlayer = 'X'; // switch players
+      // else {
+      //   //
+      //   console.log("pick another option 2");
+      // }
+      // game.currentPlayer = 'X'; // switch players
       }
     }
+// debugger;
+    if( game.currentPlayer === 'X'){
+      game.currentPlayer = 'O';
+
+    } else if (game.currentPlayer === 'O'){
+        game.currentPlayer = 'X';
+      }
 
   }); // $('.col').one('click')
 
