@@ -47,6 +47,14 @@ console.log("check me out now");
 
 var game = {
 
+  // players: {
+  //   X: {
+  //     name: '',
+  //     score: 0,
+  //   },
+  //   O: name: '',
+  // },
+
   moveCounter: 0,
   currentPlayer: "X",
   win: false,
@@ -93,7 +101,7 @@ var game = {
     game.board = [ null, null, null, null, null, null, null, null, null ];
     game.win = false;
     game.moveCounter = 0;
-
+    game.currentPlayer = "X";
 
   },
 
@@ -116,9 +124,6 @@ var game = {
   },
 
 };
-
-
-//change the screen based on what is happening
 
 
 //DOM MANIUPULATION SECTION
@@ -158,67 +163,48 @@ $(document).ready(function(){
     var id = this.id;
     var boardIndex = parseInt( this.id );
 
-
   //START GAME
-    $(this).html(game.currentPlayer);
+    // $(this).html(game.currentPlayer);
 
-    if (game.board[ boardIndex ] || game.baord ) {
+// debugger;
+
+    if (game.board[ boardIndex ]) {
       console.log("pick another option 1");
       return;
     }
 
+  $(this).html(game.currentPlayer);
 
-      // if (game.board[ boardIndex ]) {
-      //   console.log("pick another option 1");
-      //   return;
-      // }
-// debugger;
-
-      if (game.currentPlayer === 'X' ) {
-        $(this).css("backgroundColor", "red");
-        game.board[ boardIndex ] = game.currentPlayer;
-          console.log( " " + this.id);
-        game.moveCounter += 1;
-        //checkwin
-        if( game.checkWin() ){
-          $("#player1win").css({"display": "block", "font-color": "red,"});
-          console.log('win for ' + game.currentPlayer);
-        } else if(game.moveCounter === 9){
-          $("#draw").css({"display": "block", "text-align": "center"});
-          console.log('draw!');
-        }
-
-    //SWITCH TO PLAYER 2
-  } else {
-// debugger;
-
-      if(game.currentPlayer === 'O'){
-        $(this).css("backgroundColor", "blue");
-        game.board[ boardIndex ] = game.currentPlayer;
-          console.log(" " + this.id);
-          game.moveCounter += 1;
-          //checkwin statement
-          if( game.checkWin() ){
-            $("#player2win").css({"display": "block", "font-color": "blue,"});
-            console.log('win for ' + game.currentPlayer);
-          } else if(game.moveCounter === 9){
-            $("#draw").css({"display": "block", "text-align": "center"});
-            console.log('draw!');
-          }
-      // else {
-      //   //
-      //   console.log("pick another option 2");
-      // }
-      // game.currentPlayer = 'X'; // switch players
-      }
+    if(game.currentPlayer === 'X'){
+      $(this).css("backgroundColor", "red");
+    } if(game.currentPlayer === 'O'){
+      $(this).css("backgroundColor", "blue");
     }
-// debugger;
-    if( game.currentPlayer === 'X'){
-      game.currentPlayer = 'O';
 
-    } else if (game.currentPlayer === 'O'){
-        game.currentPlayer = 'X';
+    game.board[ boardIndex ] = game.currentPlayer;
+      console.log( " " + this.id);
+    game.moveCounter += 1;
+    //checkwin
+    if( game.checkWin() ){
+      $("#player1win").css({"display": "block"});
+      console.log('win for ' + game.currentPlayer);
+    } else if(game.moveCounter === 9){
+      $("#draw").css({"display": "block"});
+      console.log('draw!');
+    }
+
+// debugger;
+
+    if (game.currentPlayer === 'X' ) {
+          game.currentPlayer = 'O';
+          return;
+    } if(game.currentPlayer === 'O'){
+          game.currentPlayer = 'X';
+          return;
       }
+
+// debugger;
+
 
   }); // $('.col').one('click')
 
