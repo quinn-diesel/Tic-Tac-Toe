@@ -2,11 +2,11 @@
 
   Simple game of Tic Tack Toe.
 
-  The document is divided into the global varaible object and the DOM maniuplation.
+  The document is divided into the global variable objects and the DOM manipulation.
 
   The basic idea of the global variables is to set the game, store the final check for the variations.
 
-
+  The
 
 
 ## What I learned
@@ -38,16 +38,19 @@
 
 
 ## bugs
-  The game is all about the start.
-  I can get only the first user to display and say they have won however when the reset button is hit, there are no more messages displayed.
+   It seems that the basic functions of the game are working.
+   I need to keep building on what on the presentation, animations and see if it is possible to tackle AI.
 
 ## libraries used
 
+  Used the following codepen to help me nail the theme down.
+  https://codepen.io/chriseisenbraun/pen/riawD?editors=0110
 
 
 ## People who helped
 
   Big shout out to Max. He was a massive help when Edgy and Luke were busy or not present.
+  Also the name of the game is thanks to James Nugent aka Nugget. I promised him I would give him credit.
 
 ## Things to fix
 
