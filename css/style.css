@@ -44,7 +44,7 @@ h1 {
      width: 100%;
      max-width: 1200px;
      opacity: 0.5;
-     margin-left: 160px;
+     margin-left: 250px;  
      /*display: none;*/
  }
 
@@ -57,7 +57,7 @@ h1 {
 }
 
 .col {
-   /*float: center;*/
+   float: center;
    height: 50px;
    width: 50px;
    /*padding: 12px;*/
@@ -84,4 +84,5 @@ h1 {
   margin-left: 200px;
   margin-right: 230px;
   display: none;
+  text-align: center;
 }
