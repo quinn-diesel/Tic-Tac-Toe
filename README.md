@@ -6,8 +6,14 @@
 
   The basic idea of the global variables is to set the game, store the final check for the variations.
 
-  The
+  JS functionality
 
+## live link
+(https://quinndrick.github.io/Tic-Tac-Toe/)
+
+## screenshot
+
+![](imgages/Screen Shot 2017-06-02 at 1.49.57 pm.png?raw=true)
 
 ## What I learned
 
@@ -18,8 +24,7 @@
 
   - Divide the code into two sections. The global variables (these should be in an object) so they don't float in code and possibly be changed.
 
-  - If you are repeating yourself, you can probably find a way to write it in one line of code.
-
+  - If you are repeating yourself, it can probably be done once.
 
 
 ## What I would do differently
@@ -32,9 +37,11 @@
 
 
 
+## Future improvements
 
-## What does success in the future look like
-
+  - Style the x and o's. Something simple I never got around to.
+  - Increase the size of the board to create a Where's Wally
+  - Re-create the actual Tron video game - this might be difficult.
 
 
 ## bugs
@@ -51,11 +58,6 @@
 
   Big shout out to Max. He was a massive help when Edgy and Luke were busy or not present.
   Also the name of the game is thanks to James Nugent aka Nugget. I promised him I would give him credit.
-
-## Things to fix
-
-
-
 
 
 ---
